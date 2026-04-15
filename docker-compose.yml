@@ -1,0 +1,54 @@
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: order-application-database
+      POSTGRES_USERNAME: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgres/data
+
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_USERNAME: admin
+      PGADMIN_PASSWORD: admin
+    ports:
+      - "5050:5050"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin/data
+    depends_on:
+      - postgres
+    restart: always
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    environment:
+      RABBIT_DEFAULT_USER: admin
+      RABBIT_DEFAULT_PASSWORD: admin
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/data
+
+
+  redis:
+    image: redis:7
+    container_name: redis-cache
+    restart: always
+    ports:
+      - "6379:6379"
+
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+  rabbitmq_data:

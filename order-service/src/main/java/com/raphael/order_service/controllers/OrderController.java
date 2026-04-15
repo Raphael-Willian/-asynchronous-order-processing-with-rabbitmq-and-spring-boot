@@ -4,7 +4,6 @@ import com.raphael.order_service.dtos.request.CreateOrderRequestDTO;
 import com.raphael.order_service.dtos.response.CreateOrderResponseDTO;
 import com.raphael.order_service.services.OrderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -37,9 +37,9 @@ public class OrderService {
         ordersRepository.save(newOrder);
 
         //Publish event in queue
-        rabbitTemplate.convertAndSend("order.queue");
+        rabbitTemplate.convertAndSend("order.queue", newOrder);
 
-        return new CreateOrderResponseDTO("Pedido publicado na fila...");
+        return new CreateOrderResponseDTO("PEDIDO ID: " + newOrder.getIdOrder() + " publicado com sucesso");
     }
 
 }

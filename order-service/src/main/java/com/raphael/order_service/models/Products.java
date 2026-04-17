@@ -21,11 +21,13 @@ public class Products {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID idProduct;
 
-    @OneToOne(mappedBy = "product")
-    private Items item;
+    @ManyToOne
+    @JoinColumn(name = "id_order")
+    private Orders order;
 
     private String nameProduct;
     private String description;
+    private int amount;
     private BigDecimal priceOfProduct;
 
 

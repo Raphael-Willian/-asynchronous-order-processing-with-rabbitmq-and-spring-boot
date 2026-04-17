@@ -22,9 +22,8 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID idOrder;
 
-    @OneToOne(mappedBy = "order")
-    private List<Items> itemsOrder;
-
+    @OneToMany(mappedBy = "order")
+    private List<Products> productsOrder;
     private BigDecimal totalValue;
 
 

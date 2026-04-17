@@ -2,7 +2,9 @@ package com.raphael.order_service.services;
 
 
 import com.raphael.order_service.dtos.request.CreateOrderRequestDTO;
+import com.raphael.order_service.dtos.response.AllOrdersDTO;
 import com.raphael.order_service.dtos.response.CreateOrderResponseDTO;
+import com.raphael.order_service.dtos.response.OrderDTO;
 import com.raphael.order_service.models.Orders;
 import com.raphael.order_service.repositorys.OrdersRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -45,5 +48,26 @@ public class OrderService {
 
         return new CreateOrderResponseDTO("PEDIDO ID: " + newOrder.getIdOrder() + " publicado com sucesso");
     }
+
+    public AllOrdersDTO listAll() {
+
+        List<Orders> orders = ordersRepository.findAll();
+
+        return new AllOrdersDTO(orders);
+    }
+
+    public OrderDTO listById(UUID idOrder) {
+
+        Orders order = ordersRepository.findById(idOrder)
+                .orElseThrow(() -> new RuntimeException("Pedido com o ID informado não foi encontrado. " + "ID: " + idOrder));
+
+       return new OrderDTO(order.getIdOrder(), order.getProductsOrder(), order.getTotalValue());
+
+    }
+
+
+
+
+
 
 }

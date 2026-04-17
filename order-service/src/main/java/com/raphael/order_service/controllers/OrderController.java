@@ -6,7 +6,6 @@ import com.raphael.order_service.dtos.response.CreateOrderResponseDTO;
 import com.raphael.order_service.dtos.response.OrderDTO;
 import com.raphael.order_service.services.OrderService;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

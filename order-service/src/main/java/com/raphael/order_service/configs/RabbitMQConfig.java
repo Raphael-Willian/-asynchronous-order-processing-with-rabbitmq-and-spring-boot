@@ -7,10 +7,13 @@ import org.springframework.amqp.support.converter.JacksonJsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 @Configuration
 public class RabbitMQConfig {
 
-    public static final String QUEUE = "order.queue";
+    public static final String QUEUE_ORDERS = "order.queue";
+    public static final String QUEUE_PRODUCTS = "products.queue";
 
 
     @Bean
@@ -26,8 +29,13 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Queue queue() {
-        return new Queue(QUEUE, true); //Boolean for definition durable of queue
+    public Queue queueOrders() {
+        return new Queue(QUEUE_ORDERS, true); //Boolean for definition durable of queue
+    }
+
+    @Bean
+    public Queue queueProducts() {
+        return new Queue(QUEUE_PRODUCTS, true);
     }
 
 

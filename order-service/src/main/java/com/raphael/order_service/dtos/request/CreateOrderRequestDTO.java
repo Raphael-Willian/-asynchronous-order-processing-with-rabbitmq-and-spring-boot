@@ -1,6 +1,6 @@
 package com.raphael.order_service.dtos.request;
 
-import com.raphael.order_service.models.Items;
+import com.raphael.order_service.models.Products;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CreateOrderRequestDTO {
 
-    private List<Items> items;
+    private List<Products> productsList;
 
 }
 
